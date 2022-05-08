@@ -1,0 +1,11 @@
+function parseJwt (token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const buff = Buffer.from(base64, 'base64');
+    const payloadinit = buff.toString('ascii');
+    const payload = JSON.parse(payloadinit);
+
+    return payload
+};
+  
+const token = (parseJwt('eyJraWQiOiJ1dkU4M3N6OHZDUkRxOTRxUk1ORGFSRmZDS2xtOHVlSFhkQ2NDazdJclNjPSIsImFsZyI6IlJTMjU2In0.eyJvcmlnaW5fanRpIjoiMGQ5OWZmMmQtZTExZC00NTFiLThjNWYtMGFjZjgyYTVkY2QxIiwic3ViIjoiOWJiZDNlMjktMWZjZC00MTFkLWJmNzMtMTFiZWNkZDU4YWEzIiwiZXZlbnRfaWQiOiJkODRkMTU1Yi01M2M5LTRmOGQtOTM1NC0zZTg4NmYzM2I5YjIiLCJ0b2tlbl91c2UiOiJhY2Nlc3MiLCJzY29wZSI6ImF3cy5jb2duaXRvLnNpZ25pbi51c2VyLmFkbWluIiwiYXV0aF90aW1lIjoxNjQyNjE5MDcxLCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV91WTE3NjdjSEMiLCJleHAiOjE2NDI3MDU0NzEsImlhdCI6MTY0MjYxOTA3MSwianRpIjoiYWI4Yjk5NDgtZjgxMS00ODZmLWJhMmUtMTMyZmFlM2QzYjgzIiwiY2xpZW50X2lkIjoiN21iNDVtNWU2Zm9kaGRoaHFvZWZ1M3ZsajAiLCJ1c2VybmFtZSI6IjliYmQzZTI5LTFmY2QtNDExZC1iZjczLTExYmVjZGQ1OGFhMyJ9.XDu_Hexa6Q1nDw7umD3s-Mou6wCS2qU09vp3tTR_qGtAVdD6arD7HC1YKTaHPRUR8ivnwGc7rE2x2lmo_LWRQ2rjVJ1HIrdMnEu5TqZ6tLDRNpoMNhxUmsz_ZQfQliV3m5seScW9s0P9XiCewG5Y4kOqM5xiBFzD538rE2gV9SqsktaE3SnLQnca65xKHr7TbZ3CGFLmDqgiQKaPkFZAEKqHtZ8BVRwdjfHQJ5YPtL1xcT_WA_vl0nsc_XQpcaEzikucWTliwsM7wC2qc9HcOdym0ht5Is3dD0hByLAjezEZgcie7pfsDd9F5s_mZfBexuKWo8lnaT58uJJzHZpH8A'));
